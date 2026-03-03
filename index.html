@@ -224,35 +224,31 @@ nav a:hover { color:var(--accent); }
   font-size:14px; color:var(--text-light);
   text-decoration:line-through; margin-left:6px; font-weight:400;
 }
-.add-to-cart-btn {
-  background:var(--primary); color:var(--white);
-  border:none; padding:10px 22px; border-radius:50px;
-  font-size:13px; font-weight:600; cursor:pointer;
-  transition:var(--transition); font-family:'Poppins',sans-serif;
-}
-.add-to-cart-btn:hover {
-  background:var(--accent); color:var(--primary);
+function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
+
+  // LocalStorage se purana cart nikaalein ya empty array lein
+  let cart = JSON.parse(localStorage.getItem('amw_cart')) || [];
+
+  // Check karein ki item pehle se hai ya nahi
+  const existingItemIndex = cart.findIndex(item => item.id === productId);
+
+  if (existingItemIndex > -1) {
+    // Agar hai toh quantity badhaein
+    cart[existingItemIndex].quantity += 1;
+  } else {
+    // Agar naya hai toh array mein naya object jodein
+    cart.push({ ...product, quantity: 1 });
+  }
+
+  // Wapas LocalStorage mein save karein
+  localStorage.setItem('amw_cart', JSON.stringify(cart));
+  
+  updateCartUI(); // UI refresh karein
+  showToast('Product added to cart!');
 }
 
-/* Flipkart-style quantity counter on product card */
-.product-qty-control {
-  display:inline-flex; align-items:center; gap:0;
-  border:2px solid var(--accent); border-radius:50px; overflow:hidden;
-  background:var(--white);
-}
-.product-qty-btn {
-  width:34px; height:34px; border:none;
-  background:var(--accent); color:var(--primary);
-  font-size:16px; font-weight:700; cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  transition:var(--transition); font-family:'Poppins',sans-serif;
-  padding:0;
-}
-.product-qty-btn:hover { background:var(--accent-dark); }
-.product-qty-num {
-  min-width:32px; text-align:center;
-  font-size:15px; font-weight:700; color:var(--primary);
-  padding:0 4px;
 }
 
 /* Size selector */
