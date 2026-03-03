@@ -234,6 +234,27 @@ nav a:hover { color:var(--accent); }
   background:var(--accent); color:var(--primary);
 }
 
+/* Flipkart-style quantity counter on product card */
+.product-qty-control {
+  display:inline-flex; align-items:center; gap:0;
+  border:2px solid var(--accent); border-radius:50px; overflow:hidden;
+  background:var(--white);
+}
+.product-qty-btn {
+  width:34px; height:34px; border:none;
+  background:var(--accent); color:var(--primary);
+  font-size:16px; font-weight:700; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:var(--transition); font-family:'Poppins',sans-serif;
+  padding:0;
+}
+.product-qty-btn:hover { background:var(--accent-dark); }
+.product-qty-num {
+  min-width:32px; text-align:center;
+  font-size:15px; font-weight:700; color:var(--primary);
+  padding:0 4px;
+}
+
 /* Size selector */
 .size-selector {
   display:flex; gap:6px; margin-bottom:14px;
@@ -356,14 +377,23 @@ nav a:hover { color:var(--accent); }
   border-bottom:1px solid #f0f0f0;
 }
 .cart-item-img {
-  width:80px; height:80px; border-radius:8px;
+  width:90px; height:90px; border-radius:10px;
   overflow:hidden; flex-shrink:0; background:var(--light);
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+@keyframes cartItemHighlight {
+  0% { background:rgba(201,168,76,0.15); }
+  100% { background:transparent; }
+}
+.cart-item.just-added {
+  animation: cartItemHighlight 1.5s ease-out;
 }
 .cart-item-img img { width:100%; height:100%; object-fit:cover; }
 .cart-item-details { flex:1; }
 .cart-item-details h4 { font-size:15px; font-weight:600; color:var(--primary); margin-bottom:4px; }
 .cart-item-details .cart-item-size { font-size:12px; color:var(--text-light); margin-bottom:8px; }
-.cart-item-details .cart-item-price { font-weight:700; color:var(--primary); font-size:16px; }
+.cart-item-details .cart-item-price { font-weight:500; color:var(--text); font-size:14px; }
+.cart-item-details .cart-item-price strong { color:var(--primary); font-size:16px; }
 .cart-item-qty {
   display:flex; align-items:center; gap:8px; margin-top:8px;
 }
@@ -1068,7 +1098,7 @@ footer {
   <div class="hero-content">
     <div class="hero-badge">Premium Men's Fashion</div>
     <h1>Elevate Your <span>Style</span> With Us</h1>
-    <p>Discover premium shirts, pants & trendy outfits at Indore's most trusted men's clothing store</p>
+    <p>Discover premium shirts, pants, jeans & trendy outfits at Indore's most trusted men's clothing store</p>
     <div class="hero-btns">
       <a href="#products" class="btn-primary"><i class="fas fa-shopping-bag"></i>&nbsp; Shop Now</a>
       <a href="https://wa.me/919244354361" class="btn-outline"><i class="fab fa-whatsapp"></i>&nbsp; WhatsApp Us</a>
@@ -1095,7 +1125,7 @@ footer {
   <div class="section-header">
     <div class="tag">Our Collection</div>
     <h2>Shop Premium Menswear</h2>
-    <p>Handpicked shirts and pants for the modern man</p>
+    <p>Handpicked shirts, pants and jeans for the modern man</p>
   </div>
 
   <div class="products-grid" id="productsGrid">
@@ -1206,7 +1236,7 @@ footer {
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 <div class="cart-sidebar" id="cartSidebar">
   <div class="cart-header">
-    <h3><i class="fas fa-shopping-bag"></i> Your Cart</h3>
+    <h3><i class="fas fa-shopping-bag"></i> Your Cart (<span id="cartHeaderCount">0</span>)</h3>
     <button class="cart-close" onclick="toggleCart()">&times;</button>
   </div>
   <div class="cart-items" id="cartItems">
@@ -1444,16 +1474,109 @@ const products = [
     tag: "Popular",
     sizes: ["30", "32", "34", "36"],
     category: "pant"
+  },
+  {
+    id: 9,
+    name: "Maroon Slim Fit Shirt",
+    desc: "Stylish maroon shirt for parties and special occasions",
+    price: 549,
+    oldPrice: 949,
+    image: "https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?q=80&w=600&auto=format&fit=crop",
+    tag: "New Arrival",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    category: "shirt"
+  },
+  {
+    id: 10,
+    name: "Black Denim Jeans",
+    desc: "Classic black denim jeans for a bold, edgy look",
+    price: 799,
+    oldPrice: 1399,
+    image: "https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=600&auto=format&fit=crop",
+    tag: "Bestseller",
+    sizes: ["28", "30", "32", "34", "36"],
+    category: "jeans"
+  },
+  {
+    id: 11,
+    name: "Blue Denim Jeans",
+    desc: "Comfortable blue denim jeans, perfect for everyday wear",
+    price: 749,
+    oldPrice: 1299,
+    image: "https://images.unsplash.com/photo-1604176354204-9268737828e4?q=80&w=600&auto=format&fit=crop",
+    tag: "Trending",
+    sizes: ["28", "30", "32", "34", "36"],
+    category: "jeans"
+  },
+  {
+    id: 12,
+    name: "Light Blue Casual Shirt",
+    desc: "Fresh light blue shirt for a cool, relaxed vibe",
+    price: 479,
+    oldPrice: 849,
+    image: "https://images.unsplash.com/photo-1598033129183-c4f50c736c10?q=80&w=600&auto=format&fit=crop",
+    tag: "Popular",
+    sizes: ["S", "M", "L", "XL"],
+    category: "shirt"
+  },
+  {
+    id: 13,
+    name: "Olive Green Cargo Pants",
+    desc: "Trendy cargo pants with multiple pockets for a rugged style",
+    price: 849,
+    oldPrice: 1499,
+    image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?q=80&w=600&auto=format&fit=crop",
+    tag: "New Arrival",
+    sizes: ["30", "32", "34", "36", "38"],
+    category: "pant"
+  },
+  {
+    id: 14,
+    name: "Pink Formal Shirt",
+    desc: "Elegant pink shirt that stands out in office and events",
+    price: 529,
+    oldPrice: 899,
+    image: "https://images.unsplash.com/photo-1563630423918-b58f07336ac9?q=80&w=600&auto=format&fit=crop",
+    tag: "Deal",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    category: "shirt"
+  },
+  {
+    id: 15,
+    name: "Dark Blue Slim Jeans",
+    desc: "Slim fit dark blue jeans for a sharp modern look",
+    price: 699,
+    oldPrice: 1199,
+    image: "https://images.unsplash.com/photo-1582552938357-32b906df40cb?q=80&w=600&auto=format&fit=crop",
+    tag: "Premium",
+    sizes: ["28", "30", "32", "34", "36"],
+    category: "jeans"
+  },
+  {
+    id: 16,
+    name: "Striped Formal Shirt",
+    desc: "Classic striped shirt for a professional, polished look",
+    price: 499,
+    oldPrice: 899,
+    image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=600&auto=format&fit=crop",
+    tag: "Trending",
+    sizes: ["M", "L", "XL", "XXL"],
+    category: "shirt"
   }
 ];
 
 // ===== CART STATE =====
 let cart = [];
+let lastAddedCartIndex = -1;
 
 // ===== RENDER PRODUCTS =====
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
-  grid.innerHTML = products.map(p => `
+  grid.innerHTML = products.map(p => {
+    const size = selectedSizes[p.id];
+    const inCart = cart.find(item => item.id === p.id && item.size === size);
+    const qty = inCart ? inCart.qty : 0;
+    return `
     <div class="product-card">
       <div class="product-img">
         <img src="${p.image}" alt="${p.name}" loading="lazy">
@@ -1463,19 +1586,29 @@ function renderProducts() {
         <h4>${p.name}</h4>
         <p class="product-desc">${p.desc}</p>
         <div class="size-selector" id="sizes-${p.id}">
-          ${p.sizes.map((s, i) => `<div class="size-option${i===1?' active':''}" onclick="selectSize(${p.id},'${s}',this)">${s}</div>`).join('')}
+          ${p.sizes.map((s, i) => `<div class="size-option${s===size?' active':''}" onclick="selectSize(${p.id},'${s}',this)">${s}</div>`).join('')}
         </div>
         <div class="product-bottom">
           <div class="product-price">
             &#8377;${p.price} <span class="old-price">&#8377;${p.oldPrice}</span>
           </div>
-          <button class="add-to-cart-btn" onclick="addToCart(${p.id})">
-            <i class="fas fa-plus"></i> Add
-          </button>
+          <div id="cartControl-${p.id}">
+            ${qty > 0 ? `
+              <div class="product-qty-control">
+                <button class="product-qty-btn" onclick="changeProductQty(${p.id},-1)">−</button>
+                <span class="product-qty-num">${qty}</span>
+                <button class="product-qty-btn" onclick="changeProductQty(${p.id},1)">+</button>
+              </div>
+            ` : `
+              <button class="add-to-cart-btn" onclick="addToCart(${p.id})">
+                <i class="fas fa-plus"></i> Add
+              </button>
+            `}
+          </div>
         </div>
       </div>
     </div>
-  `).join('');
+  `}).join('');
 }
 
 // ===== SIZE SELECTION =====
@@ -1487,6 +1620,25 @@ function selectSize(productId, size, el) {
   const container = document.getElementById(`sizes-${productId}`);
   container.querySelectorAll('.size-option').forEach(s => s.classList.remove('active'));
   el.classList.add('active');
+  // Update the cart control for this product to reflect qty for selected size
+  const inCart = cart.find(item => item.id === productId && item.size === size);
+  const qty = inCart ? inCart.qty : 0;
+  const controlEl = document.getElementById(`cartControl-${productId}`);
+  if (controlEl) {
+    if (qty > 0) {
+      controlEl.innerHTML = `
+        <div class="product-qty-control">
+          <button class="product-qty-btn" onclick="changeProductQty(${productId},-1)">−</button>
+          <span class="product-qty-num">${qty}</span>
+          <button class="product-qty-btn" onclick="changeProductQty(${productId},1)">+</button>
+        </div>`;
+    } else {
+      controlEl.innerHTML = `
+        <button class="add-to-cart-btn" onclick="addToCart(${productId})">
+          <i class="fas fa-plus"></i> Add
+        </button>`;
+    }
+  }
 }
 
 // ===== ADD TO CART =====
@@ -1499,12 +1651,35 @@ function addToCart(productId) {
 
   if (existing) {
     existing.qty++;
+    lastAddedCartIndex = cart.indexOf(existing);
   } else {
     cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, size, qty: 1 });
+    lastAddedCartIndex = cart.length - 1;
   }
 
   updateCartUI();
+  renderProducts();
   showToast(`${product.name} (${size}) added to cart!`);
+
+  // Auto-open cart sidebar so user can see selected products
+  if (!document.getElementById('cartSidebar').classList.contains('active')) {
+    toggleCart();
+  }
+}
+
+// ===== CHANGE QUANTITY FROM PRODUCT CARD =====
+function changeProductQty(productId, delta) {
+  const size = selectedSizes[productId];
+  const index = cart.findIndex(item => item.id === productId && item.size === size);
+  if (index === -1) return;
+
+  cart[index].qty += delta;
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
+  }
+
+  updateCartUI();
+  renderProducts();
 }
 
 // Process pending cart item after login
@@ -1516,11 +1691,18 @@ function processPendingCartItem() {
       const existing = cart.find(item => item.id === product.id && item.size === size);
       if (existing) {
         existing.qty++;
+        lastAddedCartIndex = cart.indexOf(existing);
       } else {
         cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, size, qty: 1 });
+        lastAddedCartIndex = cart.length - 1;
       }
       updateCartUI();
+      renderProducts();
       showToast(`${product.name} (${size}) added to cart!`);
+      // Auto-open cart sidebar
+      if (!document.getElementById('cartSidebar').classList.contains('active')) {
+        toggleCart();
+      }
     }
     pendingCartItem = null;
   }
@@ -1550,6 +1732,8 @@ function updateCartUI() {
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   badge.textContent = totalItems;
+  const headerCount = document.getElementById('cartHeaderCount');
+  if (headerCount) headerCount.textContent = totalItems;
 
   if (cart.length === 0) {
     empty.style.display = 'block';
@@ -1564,12 +1748,12 @@ function updateCartUI() {
   totalEl.textContent = `\u20B9${totalPrice}`;
 
   items.innerHTML = cart.map((item, index) => `
-    <div class="cart-item">
+    <div class="cart-item${index === lastAddedCartIndex ? ' just-added' : ''}">
       <div class="cart-item-img"><img src="${item.image}" alt="${item.name}"></div>
       <div class="cart-item-details">
         <h4>${item.name}</h4>
         <div class="cart-item-size">Size: ${item.size}</div>
-        <div class="cart-item-price">\u20B9${item.price * item.qty}</div>
+        <div class="cart-item-price">\u20B9${item.price} x ${item.qty} = <strong>\u20B9${item.price * item.qty}</strong></div>
         <div class="cart-item-qty">
           <button class="qty-btn" onclick="changeQty(${index},-1)">-</button>
           <span>${item.qty}</span>
@@ -1579,6 +1763,13 @@ function updateCartUI() {
       <button class="cart-item-remove" onclick="removeFromCart(${index})"><i class="fas fa-trash-alt"></i></button>
     </div>
   `).join('');
+
+  // Scroll to the just-added item
+  if (lastAddedCartIndex >= 0) {
+    const addedEl = items.querySelectorAll('.cart-item')[lastAddedCartIndex];
+    if (addedEl) addedEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  lastAddedCartIndex = -1;
 }
 
 // ===== CHANGE QUANTITY =====
@@ -1586,12 +1777,14 @@ function changeQty(index, delta) {
   cart[index].qty += delta;
   if (cart[index].qty <= 0) cart.splice(index, 1);
   updateCartUI();
+  renderProducts();
 }
 
 // ===== REMOVE FROM CART =====
 function removeFromCart(index) {
   cart.splice(index, 1);
   updateCartUI();
+  renderProducts();
 }
 
 // ===== TOGGLE CART =====
@@ -1747,6 +1940,7 @@ function closeSuccess() {
   closeCheckout();
   cart = [];
   updateCartUI();
+  renderProducts();
   document.getElementById('buyerName').value = '';
   document.getElementById('buyerMobile').value = '';
   document.getElementById('buyerAddress').value = '';
@@ -1951,6 +2145,7 @@ function logoutUser(e) {
   document.getElementById('userDropdown').classList.remove('active');
   cart = [];
   updateCartUI();
+  renderProducts();
   showToast('You have been logged out.');
 }
 
