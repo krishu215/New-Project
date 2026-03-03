@@ -632,6 +632,222 @@ footer {
   color:rgba(255,255,255,0.85); font-size:16px;
   padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.1);
 }
+
+/* ===== USER ICON & DROPDOWN ===== */
+.user-icon {
+  position:relative; cursor:pointer; color:var(--white);
+  font-size:20px; transition:var(--transition);
+}
+.user-icon:hover { color:var(--accent); }
+.user-dropdown {
+  position:absolute; top:45px; right:0;
+  background:var(--white); border-radius:var(--radius);
+  box-shadow:var(--shadow-hover); min-width:220px;
+  display:none; overflow:hidden; z-index:100;
+}
+.user-dropdown.active { display:block; }
+.user-dropdown-header {
+  padding:16px 20px; background:var(--primary);
+  color:var(--white);
+}
+.user-dropdown-header h4 { font-size:15px; font-weight:600; }
+.user-dropdown-header p { font-size:12px; color:rgba(255,255,255,0.6); margin-top:2px; }
+.user-dropdown a, .user-dropdown button {
+  display:flex; align-items:center; gap:10px;
+  width:100%; padding:12px 20px; font-size:14px;
+  color:var(--text); border:none; background:none;
+  cursor:pointer; transition:var(--transition);
+  font-family:'Poppins',sans-serif; text-align:left;
+}
+.user-dropdown a:hover, .user-dropdown button:hover {
+  background:var(--light); color:var(--accent);
+}
+.user-dropdown .dropdown-divider {
+  height:1px; background:#eee; margin:0;
+}
+.user-dropdown .logout-btn { color:#e74c3c; }
+.user-dropdown .logout-btn:hover { background:#fef0f0; }
+
+/* ===== LOGIN/REGISTER MODAL ===== */
+.auth-modal-overlay {
+  position:fixed; inset:0;
+  background:rgba(0,0,0,0.6);
+  z-index:4000; display:none;
+  align-items:center; justify-content:center;
+  padding:20px;
+}
+.auth-modal-overlay.active { display:flex; }
+
+.auth-modal {
+  background:var(--white);
+  border-radius:16px;
+  width:100%; max-width:440px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.3);
+  overflow:hidden;
+}
+.auth-modal-header {
+  background:var(--primary); padding:32px 32px 28px;
+  text-align:center; color:var(--white);
+}
+.auth-modal-header i {
+  font-size:40px; color:var(--accent); margin-bottom:12px;
+}
+.auth-modal-header h3 {
+  font-family:'Playfair Display',serif;
+  font-size:26px; margin-bottom:6px;
+}
+.auth-modal-header p { color:rgba(255,255,255,0.7); font-size:14px; }
+
+.auth-tabs {
+  display:flex; border-bottom:2px solid #eee;
+}
+.auth-tab {
+  flex:1; padding:14px; text-align:center;
+  font-size:14px; font-weight:600; cursor:pointer;
+  background:none; border:none; color:var(--text-light);
+  transition:var(--transition); font-family:'Poppins',sans-serif;
+  border-bottom:3px solid transparent; margin-bottom:-2px;
+}
+.auth-tab.active {
+  color:var(--accent); border-bottom-color:var(--accent);
+}
+.auth-tab:hover { color:var(--accent); }
+
+.auth-form {
+  padding:28px 32px;
+  display:none; flex-direction:column; gap:16px;
+}
+.auth-form .form-group label {
+  font-size:13px; font-weight:600; color:var(--primary);
+}
+.auth-form .form-group input {
+  padding:12px 16px; border:2px solid #e8e8e8;
+  border-radius:10px; font-size:14px;
+  font-family:'Poppins',sans-serif;
+  transition:var(--transition); outline:none; width:100%;
+}
+.auth-form .form-group input:focus { border-color:var(--accent); }
+.auth-form-register { display:none; }
+.auth-form-register.active { display:flex; flex-direction:column; gap:16px; }
+.auth-form-login.active { display:flex; flex-direction:column; gap:16px; }
+
+.auth-submit {
+  width:100%; padding:14px;
+  background:var(--accent); color:var(--primary);
+  border:none; border-radius:50px;
+  font-size:15px; font-weight:700; cursor:pointer;
+  transition:var(--transition); font-family:'Poppins',sans-serif;
+  margin-top:4px;
+}
+.auth-submit:hover { background:var(--accent-dark); }
+.auth-close {
+  position:absolute; top:16px; right:16px;
+  width:36px; height:36px; border-radius:50%;
+  border:1px solid rgba(255,255,255,0.3); background:none;
+  cursor:pointer; font-size:18px; color:var(--white);
+  display:flex; align-items:center; justify-content:center;
+  transition:var(--transition); font-family:'Poppins',sans-serif;
+}
+.auth-close:hover { background:rgba(255,255,255,0.1); }
+.auth-modal-header { position:relative; }
+
+.auth-error {
+  background:#fef0f0; color:#e74c3c;
+  padding:10px 16px; border-radius:8px;
+  font-size:13px; display:none; text-align:center;
+}
+.auth-error.active { display:block; }
+
+/* ===== ORDER HISTORY MODAL ===== */
+.orders-modal-overlay {
+  position:fixed; inset:0;
+  background:rgba(0,0,0,0.6);
+  z-index:4000; display:none;
+  align-items:center; justify-content:center;
+  padding:20px;
+}
+.orders-modal-overlay.active { display:flex; }
+
+.orders-modal {
+  background:var(--white);
+  border-radius:16px;
+  width:100%; max-width:600px;
+  max-height:85vh; overflow:hidden;
+  box-shadow:0 25px 60px rgba(0,0,0,0.3);
+  display:flex; flex-direction:column;
+}
+.orders-modal-header {
+  padding:28px 32px 20px;
+  border-bottom:1px solid #eee;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.orders-modal-header h3 {
+  font-family:'Playfair Display',serif;
+  font-size:24px; color:var(--primary);
+}
+.orders-modal-close {
+  width:36px; height:36px; border-radius:50%;
+  border:1px solid #eee; background:none;
+  cursor:pointer; font-size:18px;
+  display:flex; align-items:center; justify-content:center;
+  transition:var(--transition); color:var(--text);
+  font-family:'Poppins',sans-serif;
+}
+.orders-modal-close:hover { background:var(--light); }
+
+.orders-list {
+  flex:1; overflow-y:auto; padding:20px 32px;
+}
+.orders-empty {
+  text-align:center; padding:50px 20px; color:var(--text-light);
+}
+.orders-empty i { font-size:50px; color:#ddd; margin-bottom:16px; display:block; }
+
+.order-card {
+  border:1px solid #eee; border-radius:var(--radius);
+  margin-bottom:16px; overflow:hidden;
+  transition:var(--transition);
+}
+.order-card:hover { box-shadow:var(--shadow); }
+.order-card-header {
+  background:var(--light); padding:14px 20px;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:8px;
+}
+.order-card-header .order-id {
+  font-size:13px; font-weight:600; color:var(--primary);
+}
+.order-card-header .order-date {
+  font-size:12px; color:var(--text-light);
+}
+.order-status {
+  display:inline-block; padding:4px 12px;
+  border-radius:50px; font-size:11px; font-weight:600;
+  background:#e8f5e9; color:#27ae60;
+}
+.order-card-body { padding:16px 20px; }
+.order-card-item {
+  display:flex; justify-content:space-between;
+  font-size:13px; color:var(--text); padding:4px 0;
+}
+.order-card-total {
+  display:flex; justify-content:space-between;
+  font-size:16px; font-weight:700; color:var(--primary);
+  padding-top:10px; margin-top:8px; border-top:1px solid #eee;
+}
+.order-card-address {
+  font-size:12px; color:var(--text-light); margin-top:8px;
+  padding-top:8px; border-top:1px solid #f0f0f0;
+}
+.order-card-address i { color:var(--accent); margin-right:4px; }
+
+@media(max-width:768px) {
+  .auth-form { padding:20px 24px; }
+  .auth-modal-header { padding:24px 24px 20px; }
+  .orders-list { padding:16px 20px; }
+  .orders-modal-header { padding:20px; }
+  .user-dropdown { right:-20px; }
+}
 </style>
 </head>
 
@@ -645,13 +861,24 @@ footer {
     <a href="#products">Shop</a>
     <a href="#features">Why Us</a>
     <a href="#store">Visit Store</a>
-  </nav>
-  <div class="header-actions">
+  </nav>  <div class="header-actions">
     <div class="cart-icon" id="cartToggle" onclick="toggleCart()">
       <i class="fas fa-shopping-bag"></i>
       <span class="cart-badge" id="cartBadge">0</span>
     </div>
-    <a href="tel:09630105490" class="header-call"><i class="fas fa-phone"></i> Call Now</a>
+    <div class="user-icon" id="userIconBtn" onclick="handleUserClick()">
+      <i class="fas fa-user-circle"></i>
+      <div class="user-dropdown" id="userDropdown">
+        <div class="user-dropdown-header" id="userDropdownHeader">
+          <h4 id="userDropdownName">Guest</h4>
+          <p id="userDropdownMobile"></p>
+        </div>
+        <a onclick="openOrderHistory(event)"><i class="fas fa-receipt"></i> My Orders</a>
+        <div class="dropdown-divider"></div>
+        <button class="logout-btn" onclick="logoutUser(event)"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </div>
+    <a href="tel:09244354361" class="header-call"><i class="fas fa-phone"></i> Call Now</a>
     <div class="menu-toggle" onclick="toggleMobileNav()">
       <i class="fas fa-bars" id="menuIcon"></i>
     </div>
@@ -664,6 +891,7 @@ footer {
   <a href="#products" onclick="closeMobileNav()">Shop</a>
   <a href="#features" onclick="closeMobileNav()">Why Us</a>
   <a href="#store" onclick="closeMobileNav()">Visit Store</a>
+  <a href="javascript:void(0)" onclick="closeMobileNav(); openOrderHistory(event);">My Orders</a>
 </div>
 
 <!-- HERO -->
@@ -674,7 +902,7 @@ footer {
     <p>Discover premium shirts, pants & trendy outfits at Indore's most trusted men's clothing store</p>
     <div class="hero-btns">
       <a href="#products" class="btn-primary"><i class="fas fa-shopping-bag"></i>&nbsp; Shop Now</a>
-      <a href="https://wa.me/919630105490" class="btn-outline"><i class="fab fa-whatsapp"></i>&nbsp; WhatsApp Us</a>
+      <a href="https://wa.me/919244354361" class="btn-outline"><i class="fab fa-whatsapp"></i>&nbsp; WhatsApp Us</a>
     </div>
     <div class="hero-stats">
       <div class="stat">
@@ -760,11 +988,11 @@ footer {
         <i class="fas fa-phone"></i>
         <div>
           <strong>Phone</strong>
-          <p>09630105490</p>
+          <p>09244354361</p>
         </div>
       </div>
       <div style="margin-top:30px;">
-        <a href="https://wa.me/919630105490" class="btn-primary" style="display:inline-block;"><i class="fab fa-whatsapp"></i>&nbsp; Chat on WhatsApp</a>
+        <a href="https://wa.me/919244354361" class="btn-primary" style="display:inline-block;"><i class="fab fa-whatsapp"></i>&nbsp; Chat on WhatsApp</a>
       </div>
     </div>
     <div class="store-map">
@@ -789,8 +1017,8 @@ footer {
     </div>
     <div class="footer-links">
       <h4>Contact</h4>
-      <a href="tel:09630105490"><i class="fas fa-phone"></i> 09630105490</a>
-      <a href="https://wa.me/919630105490"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="tel:09244354361"><i class="fas fa-phone"></i> 09244354361</a>
+      <a href="https://wa.me/919244354361"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       <a><i class="fas fa-map-marker-alt"></i> Bhawarkua, Indore</a>
     </div>
   </div>
@@ -801,8 +1029,8 @@ footer {
 
 <!-- FLOATING BUTTONS -->
 <div class="float-btns">
-  <a href="https://wa.me/919630105490" class="float-btn float-whatsapp"><i class="fab fa-whatsapp"></i></a>
-  <a href="tel:09630105490" class="float-btn float-call"><i class="fas fa-phone"></i></a>
+  <a href="https://wa.me/919244354361" class="float-btn float-whatsapp"><i class="fab fa-whatsapp"></i></a>
+  <a href="tel:09244354361" class="float-btn float-call"><i class="fas fa-phone"></i></a>
 </div>
 
 <!-- CART SIDEBAR -->
@@ -881,6 +1109,72 @@ footer {
       <h3>Order Placed!</h3>
       <p>Thank you for your order. We will contact you shortly on your mobile number to confirm the order and delivery details.</p>
       <button class="success-close-btn" onclick="closeSuccess()">Continue Shopping</button>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN/REGISTER MODAL -->
+<div class="auth-modal-overlay" id="authModal">
+  <div class="auth-modal">
+    <div class="auth-modal-header">
+      <button class="auth-close" onclick="closeAuthModal()">&times;</button>
+      <i class="fas fa-user-circle"></i>
+      <h3 id="authTitle">Welcome Back</h3>
+      <p id="authSubtitle">Login to track your orders</p>
+    </div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="loginTab" onclick="switchAuthTab('login')">Login</button>
+      <button class="auth-tab" id="registerTab" onclick="switchAuthTab('register')">Register</button>
+    </div>
+    <!-- Login Form -->
+    <div class="auth-form auth-form-login active" id="loginForm">
+      <div class="auth-error" id="loginError"></div>
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <input type="tel" id="loginMobile" placeholder="Enter 10-digit mobile number" maxlength="10">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password">
+      </div>
+      <button class="auth-submit" onclick="loginUser()"><i class="fas fa-sign-in-alt"></i>&nbsp; Login</button>
+    </div>
+    <!-- Register Form -->
+    <div class="auth-form auth-form-register" id="registerForm">
+      <div class="auth-error" id="registerError"></div>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="regName" placeholder="Enter your full name">
+      </div>
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <input type="tel" id="regMobile" placeholder="Enter 10-digit mobile number" maxlength="10">
+      </div>
+      <div class="form-group">
+        <label>Email <span class="optional">(optional)</span></label>
+        <input type="email" id="regEmail" placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="regPassword" placeholder="Create a password (min 4 chars)">
+      </div>
+      <button class="auth-submit" onclick="registerUser()"><i class="fas fa-user-plus"></i>&nbsp; Create Account</button>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER HISTORY MODAL -->
+<div class="orders-modal-overlay" id="ordersModal">
+  <div class="orders-modal">
+    <div class="orders-modal-header">
+      <h3><i class="fas fa-receipt"></i> My Orders</h3>
+      <button class="orders-modal-close" onclick="closeOrderHistory()">&times;</button>
+    </div>
+    <div class="orders-list" id="ordersList">
+      <div class="orders-empty" id="ordersEmpty">
+        <i class="fas fa-box-open"></i>
+        <p>No orders yet. Start shopping!</p>
+      </div>
     </div>
   </div>
 </div>
@@ -1127,6 +1421,13 @@ function openCheckout() {
   document.getElementById('successView').classList.remove('active');
   clearErrors();
 
+  // Auto-fill details if logged in
+  if (currentUser) {
+    document.getElementById('buyerName').value = currentUser.name || '';
+    document.getElementById('buyerMobile').value = currentUser.mobile || '';
+    document.getElementById('buyerEmail').value = currentUser.email || '';
+  }
+
   document.getElementById('checkoutModal').classList.add('active');
 }
 
@@ -1181,8 +1482,22 @@ function placeOrder() {
   msg += `\n*Total: \u20B9${total}*`;
 
   // Send via WhatsApp
-  const waUrl = `https://wa.me/919630105490?text=${encodeURIComponent(msg)}`;
+  const waUrl = `https://wa.me/919244354361?text=${encodeURIComponent(msg)}`;
   window.open(waUrl, '_blank');
+
+  // Save order for logged-in user
+  if (currentUser) {
+    const orderId = 'AMW' + Date.now().toString(36).toUpperCase();
+    saveOrder({
+      orderId,
+      date: new Date().toISOString(),
+      items: cart.map(item => ({ name: item.name, size: item.size, qty: item.qty, price: item.price })),
+      total,
+      address,
+      customerName: name,
+      mobile
+    });
+  }
 
   // Show success
   document.getElementById('checkoutFormView').style.display = 'none';
@@ -1230,7 +1545,240 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// ===== AUTH STATE =====
+let currentUser = null;
+
+function loadUserSession() {
+  const session = localStorage.getItem('amw_session');
+  if (session) {
+    currentUser = JSON.parse(session);
+    updateUserUI();
+  }
+}
+
+function updateUserUI() {
+  const icon = document.querySelector('#userIconBtn > i');
+  if (currentUser) {
+    icon.className = 'fas fa-user-circle';
+    icon.style.color = '#c9a84c';
+    document.getElementById('userDropdownName').textContent = currentUser.name;
+    document.getElementById('userDropdownMobile').textContent = currentUser.mobile;
+  } else {
+    icon.className = 'fas fa-user-circle';
+    icon.style.color = '';
+    document.getElementById('userDropdownName').textContent = 'Guest';
+    document.getElementById('userDropdownMobile').textContent = '';
+  }
+}
+
+function handleUserClick() {
+  if (!currentUser) {
+    openAuthModal();
+  } else {
+    const dd = document.getElementById('userDropdown');
+    dd.classList.toggle('active');
+  }
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  const userBtn = document.getElementById('userIconBtn');
+  const dd = document.getElementById('userDropdown');
+  if (dd && !userBtn.contains(e.target)) {
+    dd.classList.remove('active');
+  }
+});
+
+// ===== AUTH MODAL =====
+function openAuthModal() {
+  document.getElementById('authModal').classList.add('active');
+  switchAuthTab('login');
+}
+
+function closeAuthModal() {
+  document.getElementById('authModal').classList.remove('active');
+  clearAuthForms();
+}
+
+function switchAuthTab(tab) {
+  const loginTab = document.getElementById('loginTab');
+  const registerTab = document.getElementById('registerTab');
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  const title = document.getElementById('authTitle');
+  const subtitle = document.getElementById('authSubtitle');
+
+  if (tab === 'login') {
+    loginTab.classList.add('active');
+    registerTab.classList.remove('active');
+    loginForm.classList.add('active');
+    registerForm.classList.remove('active');
+    title.textContent = 'Welcome Back';
+    subtitle.textContent = 'Login to track your orders';
+  } else {
+    loginTab.classList.remove('active');
+    registerTab.classList.add('active');
+    loginForm.classList.remove('active');
+    registerForm.classList.add('active');
+    title.textContent = 'Create Account';
+    subtitle.textContent = 'Register to save your orders';
+  }
+  clearAuthErrors();
+}
+
+function clearAuthForms() {
+  document.getElementById('loginMobile').value = '';
+  document.getElementById('loginPassword').value = '';
+  document.getElementById('regName').value = '';
+  document.getElementById('regMobile').value = '';
+  document.getElementById('regEmail').value = '';
+  document.getElementById('regPassword').value = '';
+  clearAuthErrors();
+}
+
+function clearAuthErrors() {
+  document.getElementById('loginError').classList.remove('active');
+  document.getElementById('registerError').classList.remove('active');
+}
+
+function showAuthError(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.add('active');
+}
+
+// ===== REGISTER =====
+function registerUser() {
+  clearAuthErrors();
+  const name = document.getElementById('regName').value.trim();
+  const mobile = document.getElementById('regMobile').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const password = document.getElementById('regPassword').value;
+
+  if (!name) return showAuthError('registerError', 'Please enter your name');
+  if (!mobile || !/^\d{10}$/.test(mobile)) return showAuthError('registerError', 'Please enter a valid 10-digit mobile number');
+  if (password.length < 4) return showAuthError('registerError', 'Password must be at least 4 characters');
+
+  // Check if user already exists
+  const users = JSON.parse(localStorage.getItem('amw_users') || '[]');
+  if (users.find(u => u.mobile === mobile)) {
+    return showAuthError('registerError', 'This mobile number is already registered. Please login.');
+  }
+
+  // Save user
+  const user = { name, mobile, email, password, createdAt: new Date().toISOString() };
+  users.push(user);
+  localStorage.setItem('amw_users', JSON.stringify(users));
+
+  // Auto login
+  currentUser = { name, mobile, email };
+  localStorage.setItem('amw_session', JSON.stringify(currentUser));
+  updateUserUI();
+  closeAuthModal();
+  showToast(`Welcome, ${name}! Account created successfully.`);
+}
+
+// ===== LOGIN =====
+function loginUser() {
+  clearAuthErrors();
+  const mobile = document.getElementById('loginMobile').value.trim();
+  const password = document.getElementById('loginPassword').value;
+
+  if (!mobile || !/^\d{10}$/.test(mobile)) return showAuthError('loginError', 'Please enter a valid 10-digit mobile number');
+  if (!password) return showAuthError('loginError', 'Please enter your password');
+
+  const users = JSON.parse(localStorage.getItem('amw_users') || '[]');
+  const user = users.find(u => u.mobile === mobile && u.password === password);
+
+  if (!user) {
+    return showAuthError('loginError', 'Invalid mobile number or password');
+  }
+
+  currentUser = { name: user.name, mobile: user.mobile, email: user.email };
+  localStorage.setItem('amw_session', JSON.stringify(currentUser));
+  updateUserUI();
+  closeAuthModal();
+  showToast(`Welcome back, ${user.name}!`);
+}
+
+// ===== LOGOUT =====
+function logoutUser(e) {
+  if (e) { e.stopPropagation(); e.preventDefault(); }
+  currentUser = null;
+  localStorage.removeItem('amw_session');
+  updateUserUI();
+  document.getElementById('userDropdown').classList.remove('active');
+  showToast('Logged out successfully');
+}
+
+// ===== SAVE ORDER =====
+function saveOrder(orderData) {
+  if (!currentUser) return;
+  const ordersKey = 'amw_orders_' + currentUser.mobile;
+  const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+  orders.unshift(orderData);
+  localStorage.setItem(ordersKey, JSON.stringify(orders));
+}
+
+// ===== ORDER HISTORY =====
+function openOrderHistory(e) {
+  if (e) { e.stopPropagation(); e.preventDefault(); }
+  document.getElementById('userDropdown').classList.remove('active');
+
+  if (!currentUser) {
+    openAuthModal();
+    return;
+  }
+
+  const ordersKey = 'amw_orders_' + currentUser.mobile;
+  const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+  const list = document.getElementById('ordersList');
+
+  if (orders.length === 0) {
+    list.innerHTML = '<div class="orders-empty"><i class="fas fa-box-open"></i><p>No orders yet. Start shopping!</p></div>';
+  } else {
+    list.innerHTML = orders.map((order, i) => {
+      const date = new Date(order.date);
+      const dateStr = date.toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+      const timeStr = date.toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+      return `
+        <div class="order-card">
+          <div class="order-card-header">
+            <div>
+              <div class="order-id">Order #${order.orderId}</div>
+              <div class="order-date">${dateStr} at ${timeStr}</div>
+            </div>
+            <span class="order-status"><i class="fas fa-check"></i> Placed</span>
+          </div>
+          <div class="order-card-body">
+            ${order.items.map(item => `
+              <div class="order-card-item">
+                <span>${item.name} (${item.size}) x${item.qty}</span>
+                <span>\u20B9${item.price * item.qty}</span>
+              </div>
+            `).join('')}
+            <div class="order-card-total">
+              <span>Total</span>
+              <span>\u20B9${order.total}</span>
+            </div>
+            <div class="order-card-address">
+              <i class="fas fa-map-marker-alt"></i> ${order.address}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  document.getElementById('ordersModal').classList.add('active');
+}
+
+function closeOrderHistory() {
+  document.getElementById('ordersModal').classList.remove('active');
+}
+
 // ===== INIT =====
+loadUserSession();
 renderProducts();
 </script>
 
