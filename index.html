@@ -1490,7 +1490,17 @@ function selectSize(productId, size, el) {
 }
 
 // ===== ADD TO CART =====
+var pendingCartItem = null;
+
 function addToCart(productId) {
+  // If user is not logged in, show login screen first
+  if (!currentUser) {
+    pendingCartItem = { productId, size: selectedSizes[productId] };
+    showLoginScreen();
+    showToast('Please login to add items to cart');
+    return;
+  }
+
   const product = products.find(p => p.id === productId);
   const size = selectedSizes[productId];
   const existing = cart.find(item => item.id === productId && item.size === size);
@@ -1503,6 +1513,25 @@ function addToCart(productId) {
 
   updateCartUI();
   showToast(`${product.name} (${size}) added to cart!`);
+}
+
+// Process pending cart item after login
+function processPendingCartItem() {
+  if (pendingCartItem) {
+    const product = products.find(p => p.id === pendingCartItem.productId);
+    const size = pendingCartItem.size;
+    if (product) {
+      const existing = cart.find(item => item.id === product.id && item.size === size);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, size, qty: 1 });
+      }
+      updateCartUI();
+      showToast(`${product.name} (${size}) added to cart!`);
+    }
+    pendingCartItem = null;
+  }
 }
 
 // ===== UPDATE CART UI =====
@@ -1637,9 +1666,35 @@ function placeOrder() {
 
   if (!valid) return;
 
-  // Build WhatsApp message with order details
+  // Build order details
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const orderId = 'AMW' + Date.now().toString(36).toUpperCase();
+  const orderItemsText = cart.map(item =>
+    `${item.name} (Size: ${item.size}) x${item.qty} = \u20B9${item.price * item.qty}`
+  ).join('\n');
+
+  // Send order to Formspree
+  const formData = {
+    _subject: 'New Order - Apna Mens Wear #' + orderId,
+    orderId: orderId,
+    customerName: name,
+    mobile: mobile,
+    address: address,
+    email: email || 'Not provided',
+    orderItems: orderItemsText,
+    totalAmount: '\u20B9' + total,
+    orderDate: new Date().toLocaleString('en-IN')
+  };
+
+  fetch('https://formspree.io/f/xbdabyza', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(formData)
+  }).catch(function() {});
+
+  // Build WhatsApp message with order details
   let msg = `*New Order - Apna Mens Wear*\n\n`;
+  msg += `*Order ID:* ${orderId}\n`;
   msg += `*Customer:* ${name}\n`;
   msg += `*Mobile:* ${mobile}\n`;
   msg += `*Address:* ${address}\n`;
@@ -1656,7 +1711,6 @@ function placeOrder() {
 
   // Save order for logged-in user
   if (currentUser) {
-    const orderId = 'AMW' + Date.now().toString(36).toUpperCase();
     saveOrder({
       orderId,
       date: new Date().toISOString(),
@@ -1845,6 +1899,7 @@ function registerUser() {
   updateUserUI();
   closeAuthModal();
   showToast(`Welcome, ${name}! Account created successfully.`);
+  processPendingCartItem();
 }
 
 // ===== LOGIN =====
@@ -1868,6 +1923,7 @@ function loginUser() {
   updateUserUI();
   closeAuthModal();
   showToast(`Welcome back, ${user.name}!`);
+  processPendingCartItem();
 }
 
 // ===== LOGOUT =====
@@ -2004,6 +2060,7 @@ function loginFromScreen() {
   updateUserUI();
   hideLoginScreen();
   showToast('Welcome back, ' + user.name + '!');
+  processPendingCartItem();
 }
 
 function registerFromScreen() {
@@ -2031,6 +2088,7 @@ function registerFromScreen() {
   updateUserUI();
   hideLoginScreen();
   showToast('Welcome, ' + name + '! Account created successfully.');
+  processPendingCartItem();
 }
 
 function hideLoginScreen() {
