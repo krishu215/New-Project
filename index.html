@@ -968,7 +968,7 @@ footer {
 <body>
 
 <!-- FULL-PAGE LOGIN SCREEN -->
-<div class="login-screen" id="loginScreen">
+<div class="login-screen hidden" id="loginScreen">
   <div class="login-screen-inner">
     <div class="login-screen-brand">
       <div class="brand-icon"><i class="fas fa-tshirt"></i></div>
@@ -1276,7 +1276,7 @@ footer {
     <div class="success-message" id="successView">
       <i class="fas fa-check-circle"></i>
       <h3>Order Placed!</h3>
-      <p>Thank you for your order. We will contact you shortly on your mobile number to confirm the order and delivery details.</p>
+      <p>Thank you for your order. Your order confirmation has been sent. We will contact you shortly to confirm delivery details.</p>
       <button class="success-close-btn" onclick="closeSuccess()">Continue Shopping</button>
     </div>
   </div>
@@ -1692,8 +1692,8 @@ function placeOrder() {
     body: JSON.stringify(formData)
   }).catch(function() {});
 
-  // Build WhatsApp message with order details
-  let msg = `*New Order - Apna Mens Wear*\n\n`;
+  // REMOVED: WhatsApp order sending - orders now go only via Formspree
+  /* let msg = `*New Order - Apna Mens Wear*\n\n`;
   msg += `*Order ID:* ${orderId}\n`;
   msg += `*Customer:* ${name}\n`;
   msg += `*Mobile:* ${mobile}\n`;
@@ -1707,7 +1707,7 @@ function placeOrder() {
 
   // Send via WhatsApp
   const waUrl = `https://wa.me/919244354361?text=${encodeURIComponent(msg)}`;
-  window.open(waUrl, '_blank');
+  window.open(waUrl, '_blank'); */
 
   // Save order for logged-in user
   if (currentUser) {
@@ -2111,9 +2111,9 @@ function showLoginScreen() {
   switchLoginScreenTab('login');
 }
 
-// Check on load if user is already logged in
+// On load: if user is logged in, show orders link
 if (currentUser) {
-  hideLoginScreen();
+  document.getElementById('navOrdersLink').classList.add('visible');
 }
 </script>
 
