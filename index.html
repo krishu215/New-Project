@@ -3,279 +3,1236 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Best Men’s Wear Store in Bhawarkua Indore | Apna Mens Wear</title>
-<meta name="description" content="Apna Mens Wear - Trusted men's clothing store in Bhawarkua, Indore. Premium shirts, t-shirts, combo offers. Call now or visit today.">
+<title>Best Men's Wear Store in Bhawarkua Indore | Apna Mens Wear</title>
+<meta name="description" content="Apna Mens Wear - Trusted men's clothing store in Bhawarkua, Indore. Premium shirts, pants, t-shirts, combo offers. Shop online or visit today.">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#f8f9fa;color:#222;}
-a{text-decoration:none;}
-
-header{
-background:#111;
-color:#fff;
-padding:20px 5%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:fixed;
-width:100%;
-top:0;
-z-index:1000;
+:root {
+  --primary: #1a1a2e;
+  --accent: #c9a84c;
+  --accent-dark: #b08d3a;
+  --white: #ffffff;
+  --light: #f8f6f0;
+  --text: #333333;
+  --text-light: #777777;
+  --shadow: 0 10px 40px rgba(0,0,0,0.08);
+  --shadow-hover: 0 20px 50px rgba(0,0,0,0.15);
+  --radius: 12px;
+  --transition: all 0.3s ease;
 }
 
-header h1{font-size:22px;}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Poppins',sans-serif; background:var(--white); color:var(--text); overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+img { max-width:100%; display:block; }
 
-.cta-btn{
-background:#0d6efd;
-color:#fff;
-padding:10px 18px;
-border-radius:6px;
-font-weight:600;
-display:inline-block;
+/* Scrollbar */
+::-webkit-scrollbar { width:8px; }
+::-webkit-scrollbar-track { background:var(--light); }
+::-webkit-scrollbar-thumb { background:var(--accent); border-radius:4px; }
+
+/* ===== HEADER ===== */
+header {
+  position:fixed; top:0; width:100%; z-index:1000;
+  background:rgba(26,26,46,0.97);
+  backdrop-filter:blur(10px);
+  padding:0 5%;
+  display:flex; justify-content:space-between; align-items:center;
+  height:70px;
+  box-shadow:0 2px 20px rgba(0,0,0,0.1);
+}
+.logo {
+  font-family:'Playfair Display',serif;
+  font-size:24px; font-weight:700; color:var(--white);
+  letter-spacing:1px;
+}
+.logo span { color:var(--accent); }
+
+nav { display:flex; align-items:center; gap:30px; }
+nav a {
+  color:rgba(255,255,255,0.85); font-size:14px; font-weight:500;
+  letter-spacing:0.5px; transition:var(--transition);
+}
+nav a:hover { color:var(--accent); }
+
+.header-actions { display:flex; align-items:center; gap:20px; }
+.cart-icon {
+  position:relative; cursor:pointer; color:var(--white);
+  font-size:20px; transition:var(--transition);
+}
+.cart-icon:hover { color:var(--accent); }
+.cart-badge {
+  position:absolute; top:-8px; right:-10px;
+  background:var(--accent); color:var(--primary);
+  font-size:11px; font-weight:700;
+  width:20px; height:20px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+}
+.header-call {
+  background:var(--accent); color:var(--primary);
+  padding:8px 20px; border-radius:50px;
+  font-weight:600; font-size:13px;
+  transition:var(--transition);
+}
+.header-call:hover { background:var(--accent-dark); }
+
+.menu-toggle {
+  display:none; cursor:pointer; color:var(--white); font-size:24px;
 }
 
-.cta-btn:hover{
-background:#084298;
+/* ===== HERO ===== */
+.hero {
+  position:relative; height:100vh; min-height:600px;
+  display:flex; align-items:center; justify-content:center;
+  background:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1470&auto=format&fit=crop') center/cover no-repeat;
+  text-align:center; color:var(--white);
+}
+.hero::before {
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(26,26,46,0.85) 0%, rgba(26,26,46,0.6) 100%);
+}
+.hero-content {
+  position:relative; z-index:2; max-width:800px; padding:20px;
+}
+.hero-badge {
+  display:inline-block;
+  background:rgba(201,168,76,0.2); border:1px solid var(--accent);
+  color:var(--accent); padding:8px 24px; border-radius:50px;
+  font-size:13px; font-weight:500; letter-spacing:2px;
+  text-transform:uppercase; margin-bottom:24px;
+}
+.hero h1 {
+  font-family:'Playfair Display',serif;
+  font-size:56px; font-weight:700; line-height:1.2;
+  margin-bottom:20px;
+}
+.hero h1 span { color:var(--accent); }
+.hero p {
+  font-size:18px; color:rgba(255,255,255,0.8);
+  margin-bottom:35px; max-width:600px; margin-left:auto; margin-right:auto;
+}
+.hero-btns { display:flex; gap:15px; justify-content:center; flex-wrap:wrap; }
+.btn-primary {
+  background:var(--accent); color:var(--primary);
+  padding:14px 36px; border-radius:50px;
+  font-weight:600; font-size:15px;
+  transition:var(--transition); border:2px solid var(--accent);
+}
+.btn-primary:hover { background:var(--accent-dark); border-color:var(--accent-dark); }
+.btn-outline {
+  background:transparent; color:var(--white);
+  padding:14px 36px; border-radius:50px;
+  font-weight:600; font-size:15px;
+  border:2px solid rgba(255,255,255,0.4);
+  transition:var(--transition);
+}
+.btn-outline:hover { border-color:var(--accent); color:var(--accent); }
+
+.hero-stats {
+  display:flex; gap:40px; justify-content:center; margin-top:50px;
+  padding-top:30px; border-top:1px solid rgba(255,255,255,0.15);
+}
+.hero-stats .stat { text-align:center; }
+.hero-stats .stat-num {
+  font-family:'Playfair Display',serif;
+  font-size:32px; font-weight:700; color:var(--accent);
+}
+.hero-stats .stat-label {
+  font-size:13px; color:rgba(255,255,255,0.6); margin-top:4px;
 }
 
-/* HERO WITH IMAGE */
-.hero{
-position:relative;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-color:#fff;
-background:url('https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1470&auto=format&fit=crop') center/cover no-repeat;
+/* ===== SECTIONS ===== */
+.section {
+  padding:100px 5%;
+}
+.section-header {
+  text-align:center; margin-bottom:60px;
+}
+.section-header .tag {
+  color:var(--accent); font-size:13px; font-weight:600;
+  letter-spacing:3px; text-transform:uppercase; margin-bottom:12px;
+}
+.section-header h2 {
+  font-family:'Playfair Display',serif;
+  font-size:40px; font-weight:700; color:var(--primary);
+  margin-bottom:16px;
+}
+.section-header p {
+  color:var(--text-light); font-size:16px; max-width:550px; margin:0 auto;
 }
 
-.hero::after{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.65);
+/* ===== PRODUCTS ===== */
+.products-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:30px;
+  max-width:1300px;
+  margin:0 auto;
 }
 
-.hero-content{
-position:relative;
-z-index:2;
-max-width:800px;
-padding:20px;
-margin-top:60px;
+.product-card {
+  background:var(--white);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:var(--transition);
+  position:relative;
+}
+.product-card:hover {
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-hover);
+}
+.product-img {
+  position:relative; overflow:hidden;
+  height:320px; background:var(--light);
+}
+.product-img img {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 0.5s ease;
+}
+.product-card:hover .product-img img {
+  transform:scale(1.05);
+}
+.product-tag {
+  position:absolute; top:15px; left:15px;
+  background:var(--accent); color:var(--primary);
+  padding:4px 14px; border-radius:50px;
+  font-size:12px; font-weight:600;
+}
+.product-info {
+  padding:20px 24px 24px;
+}
+.product-info h4 {
+  font-size:18px; font-weight:600; margin-bottom:6px;
+  color:var(--primary);
+}
+.product-info .product-desc {
+  color:var(--text-light); font-size:13px; margin-bottom:14px;
+}
+.product-bottom {
+  display:flex; justify-content:space-between; align-items:center;
+}
+.product-price {
+  font-family:'Playfair Display',serif;
+  font-size:22px; font-weight:700; color:var(--primary);
+}
+.product-price .old-price {
+  font-family:'Poppins',sans-serif;
+  font-size:14px; color:var(--text-light);
+  text-decoration:line-through; margin-left:6px; font-weight:400;
+}
+.add-to-cart-btn {
+  background:var(--primary); color:var(--white);
+  border:none; padding:10px 22px; border-radius:50px;
+  font-size:13px; font-weight:600; cursor:pointer;
+  transition:var(--transition); font-family:'Poppins',sans-serif;
+}
+.add-to-cart-btn:hover {
+  background:var(--accent); color:var(--primary);
 }
 
-.hero h2{font-size:44px;margin-bottom:15px;}
-.hero p{font-size:18px;margin-bottom:25px;}
-
-.hero-buttons a{
-margin:10px;
+/* Size selector */
+.size-selector {
+  display:flex; gap:6px; margin-bottom:14px;
+}
+.size-option {
+  width:34px; height:34px; border:1px solid #ddd;
+  border-radius:6px; display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:500; cursor:pointer;
+  transition:var(--transition); background:var(--white);
+  font-family:'Poppins',sans-serif;
+}
+.size-option:hover, .size-option.active {
+  border-color:var(--accent); background:var(--accent); color:var(--primary);
+  font-weight:600;
 }
 
-.section{
-padding:80px 5%;
-text-align:center;
+/* ===== FEATURES ===== */
+.features-section { background:var(--light); }
+.features-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+  gap:30px; max-width:1100px; margin:0 auto;
+}
+.feature-card {
+  text-align:center; padding:40px 30px;
+  background:var(--white); border-radius:var(--radius);
+  box-shadow:var(--shadow); transition:var(--transition);
+}
+.feature-card:hover { transform:translateY(-5px); }
+.feature-icon {
+  width:70px; height:70px; border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent-dark));
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 20px; font-size:28px; color:var(--primary);
+}
+.feature-card h4 { font-size:18px; margin-bottom:8px; color:var(--primary); }
+.feature-card p { color:var(--text-light); font-size:14px; }
+
+/* ===== STORE INFO ===== */
+.store-section {
+  background:var(--primary); color:var(--white);
+}
+.store-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:50px; max-width:1200px; margin:0 auto; align-items:center;
+}
+.store-info h2 {
+  font-family:'Playfair Display',serif;
+  font-size:36px; margin-bottom:24px;
+}
+.store-info h2 span { color:var(--accent); }
+.store-detail {
+  display:flex; align-items:flex-start; gap:15px; margin-bottom:20px;
+}
+.store-detail i {
+  color:var(--accent); font-size:20px; margin-top:3px;
+}
+.store-detail p { color:rgba(255,255,255,0.8); font-size:15px; }
+.store-detail strong { color:var(--white); }
+.store-map {
+  border-radius:var(--radius); overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+.store-map iframe {
+  width:100%; height:350px; border:0;
 }
 
-.section h3{
-font-size:32px;
-margin-bottom:40px;
+/* ===== CART SIDEBAR ===== */
+.cart-overlay {
+  position:fixed; inset:0;
+  background:rgba(0,0,0,0.5);
+  z-index:2000; opacity:0;
+  visibility:hidden;
+  transition:var(--transition);
+}
+.cart-overlay.active { opacity:1; visibility:visible; }
+
+.cart-sidebar {
+  position:fixed; top:0; right:-450px;
+  width:420px; max-width:90vw; height:100vh;
+  background:var(--white);
+  z-index:2001;
+  transition:right 0.4s ease;
+  display:flex; flex-direction:column;
+  box-shadow:-10px 0 40px rgba(0,0,0,0.15);
+}
+.cart-sidebar.active { right:0; }
+
+.cart-header {
+  padding:24px 28px;
+  border-bottom:1px solid #eee;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.cart-header h3 {
+  font-family:'Playfair Display',serif;
+  font-size:22px; color:var(--primary);
+}
+.cart-close {
+  width:36px; height:36px; border-radius:50%;
+  border:1px solid #eee; background:none;
+  cursor:pointer; font-size:18px;
+  display:flex; align-items:center; justify-content:center;
+  transition:var(--transition); color:var(--text);
+  font-family:'Poppins',sans-serif;
+}
+.cart-close:hover { background:var(--light); }
+
+.cart-items {
+  flex:1; overflow-y:auto; padding:20px 28px;
+}
+.cart-empty {
+  text-align:center; padding:60px 20px;
+  color:var(--text-light);
+}
+.cart-empty i { font-size:60px; color:#ddd; margin-bottom:16px; }
+.cart-empty p { font-size:16px; }
+
+.cart-item {
+  display:flex; gap:16px; padding:16px 0;
+  border-bottom:1px solid #f0f0f0;
+}
+.cart-item-img {
+  width:80px; height:80px; border-radius:8px;
+  overflow:hidden; flex-shrink:0; background:var(--light);
+}
+.cart-item-img img { width:100%; height:100%; object-fit:cover; }
+.cart-item-details { flex:1; }
+.cart-item-details h4 { font-size:15px; font-weight:600; color:var(--primary); margin-bottom:4px; }
+.cart-item-details .cart-item-size { font-size:12px; color:var(--text-light); margin-bottom:8px; }
+.cart-item-details .cart-item-price { font-weight:700; color:var(--primary); font-size:16px; }
+.cart-item-qty {
+  display:flex; align-items:center; gap:8px; margin-top:8px;
+}
+.qty-btn {
+  width:28px; height:28px; border:1px solid #ddd;
+  border-radius:6px; background:var(--white);
+  cursor:pointer; font-size:14px;
+  display:flex; align-items:center; justify-content:center;
+  transition:var(--transition); font-family:'Poppins',sans-serif;
+  color:var(--text); padding:0;
+}
+.qty-btn:hover { border-color:var(--accent); }
+.cart-item-qty span { font-size:14px; font-weight:600; min-width:20px; text-align:center; }
+.cart-item-remove {
+  color:#e74c3c; font-size:16px; cursor:pointer;
+  transition:var(--transition); background:none; border:none;
+  padding:4px; align-self:flex-start;
+}
+.cart-item-remove:hover { color:#c0392b; }
+
+.cart-footer {
+  padding:24px 28px;
+  border-top:1px solid #eee;
+  background:var(--light);
+}
+.cart-total {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom:20px;
+}
+.cart-total span { font-size:16px; color:var(--text-light); }
+.cart-total strong {
+  font-family:'Playfair Display',serif;
+  font-size:24px; color:var(--primary);
+}
+.buy-now-btn {
+  width:100%; padding:16px;
+  background:var(--accent); color:var(--primary);
+  border:none; border-radius:50px;
+  font-size:16px; font-weight:700; cursor:pointer;
+  transition:var(--transition);
+  font-family:'Poppins',sans-serif;
+}
+.buy-now-btn:hover { background:var(--accent-dark); }
+
+/* ===== CHECKOUT MODAL ===== */
+.modal-overlay {
+  position:fixed; inset:0;
+  background:rgba(0,0,0,0.6);
+  z-index:3000; display:none;
+  align-items:center; justify-content:center;
+  padding:20px;
+}
+.modal-overlay.active { display:flex; }
+
+.checkout-modal {
+  background:var(--white);
+  border-radius:16px;
+  width:100%; max-width:520px;
+  max-height:90vh; overflow-y:auto;
+  box-shadow:0 25px 60px rgba(0,0,0,0.3);
+}
+.modal-header {
+  padding:28px 32px 20px;
+  border-bottom:1px solid #eee;
+}
+.modal-header h3 {
+  font-family:'Playfair Display',serif;
+  font-size:26px; color:var(--primary);
+  margin-bottom:6px;
+}
+.modal-header p { color:var(--text-light); font-size:14px; }
+
+.checkout-form {
+  padding:28px 32px;
+  display:flex; flex-direction:column; gap:18px;
+}
+.form-group { display:flex; flex-direction:column; gap:6px; }
+.form-group label {
+  font-size:13px; font-weight:600; color:var(--primary);
+}
+.form-group label .required { color:#e74c3c; }
+.form-group label .optional { color:var(--text-light); font-weight:400; font-size:12px; }
+.form-group input,
+.form-group textarea {
+  padding:14px 16px;
+  border:2px solid #e8e8e8;
+  border-radius:10px;
+  font-size:15px;
+  font-family:'Poppins',sans-serif;
+  transition:var(--transition);
+  outline:none;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color:var(--accent);
+}
+.form-group textarea { resize:vertical; min-height:80px; }
+.form-group .error-msg {
+  color:#e74c3c; font-size:12px; display:none;
+}
+.form-group.error input,
+.form-group.error textarea {
+  border-color:#e74c3c;
+}
+.form-group.error .error-msg { display:block; }
+
+.order-summary {
+  padding:0 32px 20px;
+}
+.order-summary h4 {
+  font-size:15px; font-weight:600; color:var(--primary);
+  margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid #eee;
+}
+.order-item {
+  display:flex; justify-content:space-between; font-size:14px;
+  margin-bottom:6px; color:var(--text);
+}
+.order-total {
+  display:flex; justify-content:space-between;
+  font-size:18px; font-weight:700; color:var(--primary);
+  padding-top:10px; border-top:1px solid #eee; margin-top:10px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+.modal-footer {
+  padding:20px 32px 28px;
+  display:flex; gap:12px;
+}
+.modal-cancel {
+  flex:1; padding:14px;
+  background:var(--light); color:var(--text);
+  border:none; border-radius:50px;
+  font-size:15px; font-weight:600; cursor:pointer;
+  transition:var(--transition);
+  font-family:'Poppins',sans-serif;
+}
+.modal-cancel:hover { background:#e8e8e8; }
+.modal-submit {
+  flex:2; padding:14px;
+  background:var(--accent); color:var(--primary);
+  border:none; border-radius:50px;
+  font-size:15px; font-weight:700; cursor:pointer;
+  transition:var(--transition);
+  font-family:'Poppins',sans-serif;
+}
+.modal-submit:hover { background:var(--accent-dark); }
+
+/* ===== SUCCESS MESSAGE ===== */
+.success-message {
+  text-align:center; padding:60px 32px;
+  display:none;
+}
+.success-message.active { display:block; }
+.success-message i {
+  font-size:60px; color:#27ae60; margin-bottom:20px;
+}
+.success-message h3 {
+  font-family:'Playfair Display',serif;
+  font-size:28px; color:var(--primary); margin-bottom:10px;
+}
+.success-message p { color:var(--text-light); font-size:15px; margin-bottom:30px; }
+.success-close-btn {
+  padding:14px 40px;
+  background:var(--accent); color:var(--primary);
+  border:none; border-radius:50px;
+  font-size:15px; font-weight:700; cursor:pointer;
+  transition:var(--transition);
+  font-family:'Poppins',sans-serif;
 }
 
-.card{
-background:#fff;
-padding:20px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
+/* ===== TOAST ===== */
+.toast {
+  position:fixed; bottom:30px; left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:var(--primary); color:var(--white);
+  padding:14px 28px; border-radius:50px;
+  font-size:14px; font-weight:500;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  z-index:5000;
+  transition:transform 0.4s ease;
+  display:flex; align-items:center; gap:10px;
+}
+.toast.show { transform:translateX(-50%) translateY(0); }
+.toast i { color:var(--accent); }
+
+/* ===== FOOTER ===== */
+footer {
+  background:var(--primary); color:var(--white);
+  padding:60px 5% 30px;
+}
+.footer-grid {
+  display:grid; grid-template-columns:2fr 1fr 1fr;
+  gap:40px; max-width:1200px; margin:0 auto 40px;
+}
+.footer-brand .logo { font-size:28px; margin-bottom:16px; display:block; }
+.footer-brand p { color:rgba(255,255,255,0.6); font-size:14px; line-height:1.7; max-width:350px; }
+.footer-links h4 { font-size:16px; margin-bottom:16px; color:var(--accent); }
+.footer-links a {
+  display:block; color:rgba(255,255,255,0.6);
+  font-size:14px; margin-bottom:10px;
+  transition:var(--transition);
+}
+.footer-links a:hover { color:var(--accent); }
+.footer-bottom {
+  text-align:center; padding-top:30px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  color:rgba(255,255,255,0.4); font-size:13px;
 }
 
-.card img{
-width:100%;
-border-radius:8px;
+/* ===== FLOATING BUTTONS ===== */
+.float-btns {
+  position:fixed; bottom:24px; right:24px;
+  display:flex; flex-direction:column; gap:12px;
+  z-index:1500;
+}
+.float-btn {
+  width:54px; height:54px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; color:var(--white);
+  box-shadow:0 4px 15px rgba(0,0,0,0.2);
+  transition:var(--transition);
+}
+.float-btn:hover { transform:scale(1.1); }
+.float-whatsapp { background:#25D366; }
+.float-call { background:var(--accent); color:var(--primary); }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px) {
+  .hero h1 { font-size:42px; }
+  .store-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:768px) {
+  nav { display:none; }
+  .menu-toggle { display:block; }
+  .hero { min-height:auto; height:auto; padding:120px 20px 80px; }
+  .hero h1 { font-size:32px; }
+  .hero p { font-size:15px; }
+  .hero-stats { gap:20px; }
+  .hero-stats .stat-num { font-size:24px; }
+  .section { padding:60px 5%; }
+  .section-header h2 { font-size:30px; }
+  .products-grid { grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:20px; }
+  .product-img { height:260px; }
+  .footer-grid { grid-template-columns:1fr; }
+  .checkout-form { padding:20px 24px; }
+  .modal-header { padding:24px; }
+  .order-summary { padding:0 24px 16px; }
+  .modal-footer { padding:16px 24px 24px; }
+  .header-call { display:none; }
+}
+@media(max-width:480px) {
+  .hero h1 { font-size:26px; }
+  .products-grid { grid-template-columns:1fr; }
+  .hero-stats { flex-direction:column; gap:15px; }
 }
 
-.card h4{
-margin:15px 0 10px;
+/* Mobile nav */
+.mobile-nav {
+  position:fixed; top:70px; left:0; width:100%;
+  background:var(--primary); padding:20px;
+  display:none; flex-direction:column; gap:15px;
+  z-index:999; box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
-
-.reviews{
-background:#f1f1f1;
-}
-
-form{
-max-width:600px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-input,select,textarea{
-padding:12px;
-border:1px solid #ccc;
-border-radius:6px;
-font-size:14px;
-}
-
-button{
-padding:14px;
-background:#0d6efd;
-color:#fff;
-border:none;
-border-radius:6px;
-font-size:16px;
-cursor:pointer;
-}
-
-button:hover{
-background:#084298;
-}
-
-footer{
-background:#111;
-color:#fff;
-padding:40px 5%;
-text-align:center;
-}
-
-.float-whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:#fff;
-padding:15px 18px;
-border-radius:50px;
-font-weight:bold;
-}
-
-.float-call{
-position:fixed;
-bottom:20px;
-left:20px;
-background:#0d6efd;
-color:#fff;
-padding:15px 18px;
-border-radius:50px;
-font-weight:bold;
-}
-
-@media(max-width:768px){
-.hero h2{font-size:30px;}
-.hero{height:85vh;}
+.mobile-nav.active { display:flex; }
+.mobile-nav a {
+  color:rgba(255,255,255,0.85); font-size:16px;
+  padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.1);
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
-<h1>Apna Mens Wear</h1>
-<a href="tel:09630105490" class="cta-btn">Call Now</a>
+  <a href="#" class="logo">Apna <span>Mens Wear</span></a>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Shop</a>
+    <a href="#features">Why Us</a>
+    <a href="#store">Visit Store</a>
+  </nav>
+  <div class="header-actions">
+    <div class="cart-icon" id="cartToggle" onclick="toggleCart()">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </div>
+    <a href="tel:09630105490" class="header-call"><i class="fas fa-phone"></i> Call Now</a>
+    <div class="menu-toggle" onclick="toggleMobileNav()">
+      <i class="fas fa-bars" id="menuIcon"></i>
+    </div>
+  </div>
 </header>
 
-<section class="hero">
-<div class="hero-content">
-<h2>Indore’s Trusted Men’s Fashion Store</h2>
-<p>Premium Shirts, T-Shirts & Combo Offers at Affordable Prices</p>
-
-<div class="hero-buttons">
-<a href="tel:09630105490" class="cta-btn">📞 Call Now</a>
-<a href="https://wa.me/919630105490" class="cta-btn">💬 WhatsApp</a>
-<a href="#contact" class="cta-btn">Enquire Now</a>
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home" onclick="closeMobileNav()">Home</a>
+  <a href="#products" onclick="closeMobileNav()">Shop</a>
+  <a href="#features" onclick="closeMobileNav()">Why Us</a>
+  <a href="#store" onclick="closeMobileNav()">Visit Store</a>
 </div>
 
-<p style="margin-top:20px;">⭐ 3.8 Google Rating | 90+ Reviews | Open Till 11 PM</p>
-</div>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">Premium Men's Fashion</div>
+    <h1>Elevate Your <span>Style</span> With Us</h1>
+    <p>Discover premium shirts, pants & trendy outfits at Indore's most trusted men's clothing store</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary"><i class="fas fa-shopping-bag"></i>&nbsp; Shop Now</a>
+      <a href="https://wa.me/919630105490" class="btn-outline"><i class="fab fa-whatsapp"></i>&nbsp; WhatsApp Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">3.8+</div>
+        <div class="stat-label">Google Rating</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">90+</div>
+        <div class="stat-label">Happy Reviews</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">11 PM</div>
+        <div class="stat-label">Open Till Late</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-<h3>Featured Collection</h3>
-<div class="grid">
-<div class="card">
-<img src="https://i.ibb.co/dsL742cT/IMG-20260227-225649.jpg">
-<h4>Premium Shirts</h4>
-<p>Starting ₹399</p>
-</div>
-<div class="card">
-<img src="https://i.ibb.co/NgNdHr01/IMG-20260227-225640.jpg">
-<h4>Trendy T-Shirts</h4>
-<p>Starting ₹299</p>
-</div>
-<div class="card">
-<img src="https://i.ibb.co/dsL742cT/IMG-20260227-225649.jpg">
-<h4>Combo Offers</h4>
-<p>4 Shirts @ ₹1000*</p>
-</div>
-</div>
+<!-- PRODUCTS -->
+<section class="section" id="products">
+  <div class="section-header">
+    <div class="tag">Our Collection</div>
+    <h2>Shop Premium Menswear</h2>
+    <p>Handpicked shirts and pants for the modern man</p>
+  </div>
+
+  <div class="products-grid" id="productsGrid">
+    <!-- Products rendered by JS -->
+  </div>
 </section>
 
-<section class="section reviews">
-<h3>Why Choose Us</h3>
-<p>✔ Affordable Pricing</p>
-<p>✔ Friendly Staff</p>
-<p>✔ Trendy Designs</p>
-<p>✔ Convenient Bhawarkua Location</p>
+<!-- FEATURES -->
+<section class="section features-section" id="features">
+  <div class="section-header">
+    <div class="tag">Why Choose Us</div>
+    <h2>The Apna Mens Wear Promise</h2>
+    <p>Quality, style and value that keeps you coming back</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-tag"></i></div>
+      <h4>Best Prices</h4>
+      <p>Premium quality at affordable prices. Combo offers starting at just Rs 1000.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-tshirt"></i></div>
+      <h4>Trendy Designs</h4>
+      <p>Latest fashion trends curated just for you. New arrivals every week.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-award"></i></div>
+      <h4>Quality Fabric</h4>
+      <p>Premium cotton and blended fabrics that feel great and last long.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-truck"></i></div>
+      <h4>Delivery Available</h4>
+      <p>Get your favourite outfits delivered right to your doorstep in Indore.</p>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-<h3>Visit Our Store</h3>
-<p>📍 40, Bholaram Ustad Marg, Bhawarkua, Indore</p>
-<p>🕒 Open Daily – Closes 11 PM</p>
-
-<iframe 
-src="https://maps.google.com/maps?q=40%20Bholaram%20Ustad%20Marg%20Indore&t=&z=13&ie=UTF8&iwloc=&output=embed"
-width="100%" height="300" style="border:0;border-radius:10px;" allowfullscreen>
-</iframe>
+<!-- STORE -->
+<section class="section store-section" id="store">
+  <div class="store-grid">
+    <div class="store-info">
+      <h2>Visit <span>Our Store</span></h2>
+      <div class="store-detail">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <strong>Address</strong>
+          <p>40, Bholaram Ustad Marg, Bhawarkua, Indore, Madhya Pradesh</p>
+        </div>
+      </div>
+      <div class="store-detail">
+        <i class="fas fa-clock"></i>
+        <div>
+          <strong>Timings</strong>
+          <p>Open Daily - Closes 11 PM</p>
+        </div>
+      </div>
+      <div class="store-detail">
+        <i class="fas fa-phone"></i>
+        <div>
+          <strong>Phone</strong>
+          <p>09630105490</p>
+        </div>
+      </div>
+      <div style="margin-top:30px;">
+        <a href="https://wa.me/919630105490" class="btn-primary" style="display:inline-block;"><i class="fab fa-whatsapp"></i>&nbsp; Chat on WhatsApp</a>
+      </div>
+    </div>
+    <div class="store-map">
+      <iframe src="https://maps.google.com/maps?q=40%20Bholaram%20Ustad%20Marg%20Indore&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
 </section>
 
-<section class="section" id="contact">
-<h3>Send Inquiry</h3>
-
-<form action="https://formspree.io/f/xbdabyza" method="POST">
-<input type="hidden" name="_subject" value="New Website Inquiry - Apna Mens Wear">
-<input type="hidden" name="_captcha" value="false">
-
-<input type="text" name="name" placeholder="Full Name" required>
-<input type="tel" name="phone" placeholder="Mobile Number" required>
-<input type="email" name="email" placeholder="Email Address">
-
-<select name="interest">
-<option value="">What are you looking for?</option>
-<option>Shirts</option>
-<option>T-Shirts</option>
-<option>Formal Wear</option>
-<option>Combo Offers</option>
-<option>Bulk Purchase</option>
-</select>
-
-<textarea name="message" placeholder="Message (Optional)"></textarea>
-
-<button type="submit">Send Inquiry</button>
-</form>
-</section>
-
+<!-- FOOTER -->
 <footer>
-<h3>Apna Mens Wear</h3>
-<p>📞 09630105490</p>
-<p>📍 Bhawarkua, Indore</p>
-<p>In-store Pickup | Delivery Available</p>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">Apna <span>Mens Wear</span></span>
+      <p>Indore's trusted men's clothing destination. Premium shirts, pants, and combo offers at unbeatable prices since years.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#products">Shop</a>
+      <a href="#features">Why Us</a>
+      <a href="#store">Visit Store</a>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <a href="tel:09630105490"><i class="fas fa-phone"></i> 09630105490</a>
+      <a href="https://wa.me/919630105490"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a><i class="fas fa-map-marker-alt"></i> Bhawarkua, Indore</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Apna Mens Wear. All Rights Reserved.
+  </div>
 </footer>
 
-<a href="https://wa.me/919630105490" class="float-whatsapp">WhatsApp</a>
-<a href="tel:09630105490" class="float-call">Call</a>
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <a href="https://wa.me/919630105490" class="float-btn float-whatsapp"><i class="fab fa-whatsapp"></i></a>
+  <a href="tel:09630105490" class="float-btn float-call"><i class="fas fa-phone"></i></a>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3><i class="fas fa-shopping-bag"></i> Your Cart</h3>
+    <button class="cart-close" onclick="toggleCart()">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <i class="fas fa-shopping-bag"></i>
+      <p>Your cart is empty</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total">
+      <span>Total</span>
+      <strong id="cartTotal">Rs 0</strong>
+    </div>
+    <button class="buy-now-btn" onclick="openCheckout()"><i class="fas fa-shopping-cart"></i>&nbsp; Buy Now</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="checkout-modal">
+    <!-- Form View -->
+    <div id="checkoutFormView">
+      <div class="modal-header">
+        <h3>Complete Your Order</h3>
+        <p>Fill in your details to place the order</p>
+      </div>
+
+      <div class="checkout-form" id="checkoutForm">
+        <div class="form-group" id="nameGroup">
+          <label>Full Name <span class="required">*</span></label>
+          <input type="text" id="buyerName" placeholder="Enter your full name">
+          <span class="error-msg">Please enter your name</span>
+        </div>
+        <div class="form-group" id="mobileGroup">
+          <label>Mobile Number <span class="required">*</span></label>
+          <input type="tel" id="buyerMobile" placeholder="Enter 10-digit mobile number" maxlength="10">
+          <span class="error-msg">Please enter a valid 10-digit mobile number</span>
+        </div>
+        <div class="form-group" id="addressGroup">
+          <label>Delivery Address <span class="required">*</span></label>
+          <textarea id="buyerAddress" placeholder="Enter your full delivery address"></textarea>
+          <span class="error-msg">Please enter your delivery address</span>
+        </div>
+        <div class="form-group" id="emailGroup">
+          <label>Email <span class="optional">(optional)</span></label>
+          <input type="email" id="buyerEmail" placeholder="Enter your email address">
+          <span class="error-msg">Please enter a valid email address</span>
+        </div>
+      </div>
+
+      <div class="order-summary" id="orderSummary">
+        <h4>Order Summary</h4>
+        <div id="orderItems"></div>
+        <div class="order-total">
+          <span>Total</span>
+          <span id="orderTotal">Rs 0</span>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeCheckout()">Cancel</button>
+        <button class="modal-submit" onclick="placeOrder()"><i class="fas fa-check"></i>&nbsp; Place Order</button>
+      </div>
+    </div>
+
+    <!-- Success View -->
+    <div class="success-message" id="successView">
+      <i class="fas fa-check-circle"></i>
+      <h3>Order Placed!</h3>
+      <p>Thank you for your order. We will contact you shortly on your mobile number to confirm the order and delivery details.</p>
+      <button class="success-close-btn" onclick="closeSuccess()">Continue Shopping</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <i class="fas fa-check-circle"></i>
+  <span id="toastMsg">Added to cart!</span>
+</div>
+
+<script>
+// ===== PRODUCTS DATA =====
+const products = [
+  {
+    id: 1,
+    name: "Royal Blue Formal Shirt",
+    desc: "Premium cotton formal shirt, perfect for office & events",
+    price: 599,
+    oldPrice: 999,
+    image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=600&auto=format&fit=crop",
+    tag: "Bestseller",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    category: "shirt"
+  },
+  {
+    id: 2,
+    name: "Classic White Shirt",
+    desc: "Elegant white shirt for a crisp, clean look",
+    price: 499,
+    oldPrice: 899,
+    image: "https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?q=80&w=600&auto=format&fit=crop",
+    tag: "Popular",
+    sizes: ["S", "M", "L", "XL"],
+    category: "shirt"
+  },
+  {
+    id: 3,
+    name: "Printed Casual Shirt",
+    desc: "Stylish printed shirt for casual outings & weekends",
+    price: 449,
+    oldPrice: 799,
+    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=600&auto=format&fit=crop",
+    tag: "New Arrival",
+    sizes: ["M", "L", "XL", "XXL"],
+    category: "shirt"
+  },
+  {
+    id: 4,
+    name: "Slim Fit Black Trousers",
+    desc: "Sharp slim-fit trousers for a polished professional look",
+    price: 699,
+    oldPrice: 1199,
+    image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=600&auto=format&fit=crop",
+    tag: "Bestseller",
+    sizes: ["30", "32", "34", "36", "38"],
+    category: "pant"
+  },
+  {
+    id: 5,
+    name: "Beige Chino Pants",
+    desc: "Comfortable chino pants, great for casual & semi-formal wear",
+    price: 649,
+    oldPrice: 1099,
+    image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?q=80&w=600&auto=format&fit=crop",
+    tag: "Trending",
+    sizes: ["30", "32", "34", "36"],
+    category: "pant"
+  },
+  {
+    id: 6,
+    name: "Navy Blue Formal Trousers",
+    desc: "Classic navy trousers for the complete gentleman look",
+    price: 749,
+    oldPrice: 1299,
+    image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=600&auto=format&fit=crop",
+    tag: "Premium",
+    sizes: ["30", "32", "34", "36", "38"],
+    category: "pant"
+  },
+  {
+    id: 7,
+    name: "Checkered Casual Shirt",
+    desc: "Trendy checks pattern shirt for a smart casual vibe",
+    price: 399,
+    oldPrice: 699,
+    image: "https://images.unsplash.com/photo-1588359348347-9bc6cbbb689e?q=80&w=600&auto=format&fit=crop",
+    tag: "Deal",
+    sizes: ["S", "M", "L", "XL"],
+    category: "shirt"
+  },
+  {
+    id: 8,
+    name: "Grey Slim Fit Trousers",
+    desc: "Versatile grey trousers that pair well with any shirt",
+    price: 599,
+    oldPrice: 999,
+    image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop",
+    tag: "Popular",
+    sizes: ["30", "32", "34", "36"],
+    category: "pant"
+  }
+];
+
+// ===== CART STATE =====
+let cart = [];
+
+// ===== RENDER PRODUCTS =====
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = products.map(p => `
+    <div class="product-card">
+      <div class="product-img">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <span class="product-tag">${p.tag}</span>
+      </div>
+      <div class="product-info">
+        <h4>${p.name}</h4>
+        <p class="product-desc">${p.desc}</p>
+        <div class="size-selector" id="sizes-${p.id}">
+          ${p.sizes.map((s, i) => `<div class="size-option${i===1?' active':''}" onclick="selectSize(${p.id},'${s}',this)">${s}</div>`).join('')}
+        </div>
+        <div class="product-bottom">
+          <div class="product-price">
+            &#8377;${p.price} <span class="old-price">&#8377;${p.oldPrice}</span>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart(${p.id})">
+            <i class="fas fa-plus"></i> Add
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===== SIZE SELECTION =====
+const selectedSizes = {};
+products.forEach(p => { selectedSizes[p.id] = p.sizes[1] || p.sizes[0]; });
+
+function selectSize(productId, size, el) {
+  selectedSizes[productId] = size;
+  const container = document.getElementById(`sizes-${productId}`);
+  container.querySelectorAll('.size-option').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ===== ADD TO CART =====
+function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  const size = selectedSizes[productId];
+  const existing = cart.find(item => item.id === productId && item.size === size);
+
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, size, qty: 1 });
+  }
+
+  updateCartUI();
+  showToast(`${product.name} (${size}) added to cart!`);
+}
+
+// ===== UPDATE CART UI =====
+function updateCartUI() {
+  const badge = document.getElementById('cartBadge');
+  const items = document.getElementById('cartItems');
+  const empty = document.getElementById('cartEmpty');
+  const footer = document.getElementById('cartFooter');
+  const totalEl = document.getElementById('cartTotal');
+
+  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+  badge.textContent = totalItems;
+
+  if (cart.length === 0) {
+    empty.style.display = 'block';
+    footer.style.display = 'none';
+    items.innerHTML = '';
+    items.appendChild(empty);
+    return;
+  }
+
+  empty.style.display = 'none';
+  footer.style.display = 'block';
+  totalEl.textContent = `\u20B9${totalPrice}`;
+
+  items.innerHTML = cart.map((item, index) => `
+    <div class="cart-item">
+      <div class="cart-item-img"><img src="${item.image}" alt="${item.name}"></div>
+      <div class="cart-item-details">
+        <h4>${item.name}</h4>
+        <div class="cart-item-size">Size: ${item.size}</div>
+        <div class="cart-item-price">\u20B9${item.price * item.qty}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty(${index},-1)">-</button>
+          <span>${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${index},1)">+</button>
+        </div>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${index})"><i class="fas fa-trash-alt"></i></button>
+    </div>
+  `).join('');
+}
+
+// ===== CHANGE QUANTITY =====
+function changeQty(index, delta) {
+  cart[index].qty += delta;
+  if (cart[index].qty <= 0) cart.splice(index, 1);
+  updateCartUI();
+}
+
+// ===== REMOVE FROM CART =====
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCartUI();
+}
+
+// ===== TOGGLE CART =====
+function toggleCart() {
+  document.getElementById('cartSidebar').classList.toggle('active');
+  document.getElementById('cartOverlay').classList.toggle('active');
+}
+
+// ===== CHECKOUT =====
+function openCheckout() {
+  if (cart.length === 0) return;
+  toggleCart();
+
+  // Populate order summary
+  const orderItems = document.getElementById('orderItems');
+  const orderTotal = document.getElementById('orderTotal');
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+  orderItems.innerHTML = cart.map(item => `
+    <div class="order-item">
+      <span>${item.name} (${item.size}) x${item.qty}</span>
+      <span>\u20B9${item.price * item.qty}</span>
+    </div>
+  `).join('');
+  orderTotal.textContent = `\u20B9${total}`;
+
+  // Reset form
+  document.getElementById('checkoutFormView').style.display = 'block';
+  document.getElementById('successView').classList.remove('active');
+  clearErrors();
+
+  document.getElementById('checkoutModal').classList.add('active');
+}
+
+function closeCheckout() {
+  document.getElementById('checkoutModal').classList.remove('active');
+}
+
+// ===== FORM VALIDATION =====
+function clearErrors() {
+  document.querySelectorAll('.form-group').forEach(g => g.classList.remove('error'));
+}
+
+function placeOrder() {
+  clearErrors();
+  let valid = true;
+
+  const name = document.getElementById('buyerName').value.trim();
+  const mobile = document.getElementById('buyerMobile').value.trim();
+  const address = document.getElementById('buyerAddress').value.trim();
+  const email = document.getElementById('buyerEmail').value.trim();
+
+  if (!name) {
+    document.getElementById('nameGroup').classList.add('error');
+    valid = false;
+  }
+  if (!mobile || !/^\d{10}$/.test(mobile)) {
+    document.getElementById('mobileGroup').classList.add('error');
+    valid = false;
+  }
+  if (!address) {
+    document.getElementById('addressGroup').classList.add('error');
+    valid = false;
+  }
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('emailGroup').classList.add('error');
+    valid = false;
+  }
+
+  if (!valid) return;
+
+  // Build WhatsApp message with order details
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  let msg = `*New Order - Apna Mens Wear*\n\n`;
+  msg += `*Customer:* ${name}\n`;
+  msg += `*Mobile:* ${mobile}\n`;
+  msg += `*Address:* ${address}\n`;
+  if (email) msg += `*Email:* ${email}\n`;
+  msg += `\n*Order Items:*\n`;
+  cart.forEach(item => {
+    msg += `- ${item.name} (Size: ${item.size}) x${item.qty} = \u20B9${item.price * item.qty}\n`;
+  });
+  msg += `\n*Total: \u20B9${total}*`;
+
+  // Send via WhatsApp
+  const waUrl = `https://wa.me/919630105490?text=${encodeURIComponent(msg)}`;
+  window.open(waUrl, '_blank');
+
+  // Show success
+  document.getElementById('checkoutFormView').style.display = 'none';
+  document.getElementById('successView').classList.add('active');
+}
+
+function closeSuccess() {
+  closeCheckout();
+  cart = [];
+  updateCartUI();
+  document.getElementById('buyerName').value = '';
+  document.getElementById('buyerMobile').value = '';
+  document.getElementById('buyerAddress').value = '';
+  document.getElementById('buyerEmail').value = '';
+}
+
+// ===== TOAST =====
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// ===== MOBILE NAV =====
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  const icon = document.getElementById('menuIcon');
+  nav.classList.toggle('active');
+  icon.className = nav.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('active');
+  document.getElementById('menuIcon').className = 'fas fa-bars';
+}
+
+// ===== SMOOTH SCROLL =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+  });
+});
+
+// ===== INIT =====
+renderProducts();
+</script>
 
 </body>
 </html>
