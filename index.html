@@ -1493,14 +1493,6 @@ function selectSize(productId, size, el) {
 var pendingCartItem = null;
 
 function addToCart(productId) {
-  // If user is not logged in, show login screen first
-  if (!currentUser) {
-    pendingCartItem = { productId, size: selectedSizes[productId] };
-    showLoginScreen();
-    showToast('Please login to add items to cart');
-    return;
-  }
-
   const product = products.find(p => p.id === productId);
   const size = selectedSizes[productId];
   const existing = cart.find(item => item.id === productId && item.size === size);
@@ -1531,6 +1523,18 @@ function processPendingCartItem() {
       showToast(`${product.name} (${size}) added to cart!`);
     }
     pendingCartItem = null;
+  }
+
+  // If user was trying to checkout before login, proceed to checkout
+  if (pendingCheckout && cart.length > 0) {
+    pendingCheckout = false;
+    setTimeout(function() { openCheckout(); }, 300);
+  }
+
+  // If user was trying to view order history before login, open it
+  if (pendingOrderHistory) {
+    pendingOrderHistory = false;
+    setTimeout(function() { openOrderHistory(); }, 300);
   }
 }
 
@@ -1597,8 +1601,20 @@ function toggleCart() {
 }
 
 // ===== CHECKOUT =====
+var pendingCheckout = false;
+
 function openCheckout() {
   if (cart.length === 0) return;
+
+  // If user is not logged in, show login screen first
+  if (!currentUser) {
+    pendingCheckout = true;
+    toggleCart();
+    showLoginScreen();
+    showToast('Please login to place your order');
+    return;
+  }
+
   toggleCart();
 
   // Populate order summary
@@ -1935,7 +1951,7 @@ function logoutUser(e) {
   document.getElementById('userDropdown').classList.remove('active');
   cart = [];
   updateCartUI();
-  showLoginScreen();
+  showToast('You have been logged out.');
 }
 
 // ===== SAVE ORDER =====
@@ -1948,12 +1964,16 @@ function saveOrder(orderData) {
 }
 
 // ===== ORDER HISTORY =====
+var pendingOrderHistory = false;
+
 function openOrderHistory(e) {
   if (e) { e.stopPropagation(); e.preventDefault(); }
   document.getElementById('userDropdown').classList.remove('active');
 
   if (!currentUser) {
-    openAuthModal();
+    pendingOrderHistory = true;
+    showLoginScreen();
+    showToast('Please login to view your orders');
     return;
   }
 
